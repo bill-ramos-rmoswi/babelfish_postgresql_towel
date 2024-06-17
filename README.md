@@ -6,3 +6,5 @@ According to the [Hitchhiker's Guide to the Galaxy Fandom page](https://hitchhik
 >"Douglas Adams got the idea for the phrase 'knowing where one's towel is' when he went travelling and found that his beach towel kept disappearing. In The Hitchhiker's Guide to the Galaxy: The Original Radio Scripts, his friends describe how he would always "mislay" his towel."
 
 Think of this repository as your towel for all aspects of using Babelfish for migrating SQL Server applications and databases.
+
+If you have you need a towel now, please [create an Issue](https://github.com/bill-ramos-rmoswi/babelfish_postgresql_towel/issues) and we can work together to help you out!
