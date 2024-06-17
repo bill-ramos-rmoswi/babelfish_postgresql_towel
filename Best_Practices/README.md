@@ -1,0 +1,1 @@
+This folder contains best practices related to using Babelfish with PostgreSQL. If you see a topic you would like to add, please create an [Issue](https://github.com/bill-ramos-rmoswi/babelfish_postgresql_towel/issues).
