@@ -12,6 +12,20 @@ Multiple log destinations can be enabled at the same time:
 ALTER SYSTEM SET log_destination = 'stderr,jsonlog'
 ```
 
+Logging verbosity can be configured using the following configuration parameters ([reference](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHAT)):
+
+ - `log_checkpoints`
+ - `log_connections`
+ - `log_duration`
+ - `log_error_verbosity`
+ - `log_line_prefix`
+ - `log_lock_waits`
+ - `log_statement`
+
+The following Babelfish-specific configuration parameter allows to log details about TDS connections (can be set to values from `0` to `3`):
+
+ - `babelfishpg_tds.tds_debug_log_level`
+
 Log file with JSON records can be loaded into DB table like this, with each record represented as a single `jsonb` value:
 
 ```sql
@@ -36,13 +50,19 @@ After records are loaded into DB table we can use [Postgres JSON funtions](https
 particular JSON fields, for example:
 
 ```sql
-SELECT j['pid'], j->>'context' FROM log_tuesday
+SELECT j['pid'], j->>'message' FROM log_tuesday
 WHERE j->>'remote_host' = '192.168.178.58'
 ```
 
-To format multiline fields, line endings embedded in JSON strings can be replaced with actual line endings:
+|pid|msg|
+|---|---|
+|8332|Unmapped error found. Code: 1088, Message: 'MERGE' is not currently supported in Babelfish, File: tsqlIface.cpp, Line: 2761, Context: babelfishpg_tsql|
+|8332|'MERGE' is not currently supported in Babelfish|
+
+Line endings embedded in JSON strings can be replaced with actual line endings, for example, query all `ERROR` logs records written during last hour:
 
 ```sql
-SELECT j['pid'], j->>'remote_host', replace(j->>'message', '\r\n', e'\n') AS msg FROM log_tuesday
-WHERE j->>'message' ILIKE '%select%'
+SELECT j['pid'], replace(j->>'message', '\r\n', e'\n') FROM log_tuesday
+WHERE j->>'error_severity' = 'ERROR'
+AND cast(j->>'timestamp' AS timestamp) > now() - INTERVAL '1 hour'
 ```
