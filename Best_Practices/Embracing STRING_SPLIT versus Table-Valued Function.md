@@ -1,10 +1,10 @@
 # Optimizing String Splitting in SQL Server and Babelfish: A Performance Journey
-Written by Bill Ramos @bill_ramos_rmoswi
-This blog post was written with the help of Claude.ai and validated by me
+Written by Bill Ramos @bill_ramos_rmoswi   
+This blog post was written with the help of Claude.ai and validated by me.   
 
 ## Introduction
 
-As database technologies evolve, it's crucial to stay updated with the latest features that can enhance your query performance. In this post, we'll explore string splitting operations in SQL Server and Babelfish for PostgreSQL, comparing different approaches and their performance implications. We'll also provide practical guidance on how to refactor your existing code to take advantage of these optimizations.
+As database technologies evolve, it's crucial to stay updated with the latest features that can enhance your query performance. In this post, we'll explore string splitting operations in SQL Server and Babelfish for PostgreSQL, comparing different approaches and their performance implications. I'll also provide practical guidance on how to refactor your existing code to take advantage of these optimizations.
 
 ## The Evolution of String Splitting in SQL Server
 
