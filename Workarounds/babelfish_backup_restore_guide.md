@@ -475,12 +475,21 @@ echo "✓ Database '$BBF_DATABASE_NAME' does not exist on target (good)"
 echo ""
 echo "Step 1: Applying T-SQL roles to target cluster..."
 
-RESTORE_OUTPUT=$($TIME_CMD psql --host="$RESTORE_HOST" \
+if [[ "$USE_TIME" == true ]]; then
+    RESTORE_OUTPUT=$(time psql --host="$RESTORE_HOST" \
                               --port="$PGPORT" \
                               --dbname="$PGDATABASE" \
                               --username="$PGUSER" \
                               --single-transaction \
                               --file "$ROLES_FILE" 2>&1)
+else
+    RESTORE_OUTPUT=$(psql --host="$RESTORE_HOST" \
+                          --port="$PGPORT" \
+                          --dbname="$PGDATABASE" \
+                          --username="$PGUSER" \
+                          --single-transaction \
+                          --file "$ROLES_FILE" 2>&1)
+fi
 
 RESTORE_EXIT_CODE=$?
 
@@ -501,12 +510,21 @@ fi
 echo ""
 echo "Step 2: Restoring database objects and data..."
 
-RESTORE_OUTPUT=$($TIME_CMD pg_restore --host="$RESTORE_HOST" \
-                                     --port="$PGPORT" \
-                                     -d "$PGDATABASE" \
-                                     -U "$PGUSER" \
-                                     --verbose \
-                                     "$DB_FILE" 2>&1)
+if [[ "$USE_TIME" == true ]]; then
+    RESTORE_OUTPUT=$(time pg_restore --host="$RESTORE_HOST" \
+                                    --port="$PGPORT" \
+                                    -d "$PGDATABASE" \
+                                    -U "$PGUSER" \
+                                    --verbose \
+                                    "$DB_FILE" 2>&1)
+else
+    RESTORE_OUTPUT=$(pg_restore --host="$RESTORE_HOST" \
+                               --port="$PGPORT" \
+                               -d "$PGDATABASE" \
+                               -U "$PGUSER" \
+                               --verbose \
+                               "$DB_FILE" 2>&1)
+fi
 
 RESTORE_EXIT_CODE=$?
 
