@@ -75,17 +75,21 @@
 - Open-source solution for fleet-wide monitoring with CloudWatch integration
 - GitHub: https://github.com/aws-samples/monitoring-aurora-postgresql-health-large-scale-deployments
 
-**Amazon Aurora Postgres Advanced Monitoring**
+**Amazon Aurora Postgres Advanced Monitoring** (???)
 - https://github.com/awslabs/amazon-aurora-postgres-monitoring
 - Serverless Lambda-based monitoring with custom CloudWatch dashboards and metrics
 
-**An Open Source Performance Monitoring Tool for Aurora PostgreSQL (Intuit AWR)**
+**An Open Source Performance Monitoring Tool for Aurora PostgreSQL (Intuit AWR)** 
+**NOTE** Not tested with Babelfish as of October 14, 2025
+
 - https://medium.com/intuit-engineering/an-open-source-performance-monitoring-tool-for-aurora-postgresql-58fb8be21f64
 - Automatic Workload Repository (AWR) for Aurora PostgreSQL with historical statistics
 
 **Setting Up Database Monitoring for Aurora managed Postgres (Datadog)**
+**NOTE** Not tested with Babelfish as of October 14, 2025
+
 - https://docs.datadoghq.com/database_monitoring/setup_postgres/aurora/
-- Third-party monitoring with deep query metrics and explain plans
+- Third-party monitoring with deep query metrics and explain plans. Focuses on PostgreSQL queries, but should work with Babelfish on the TDS port
 
 ---
 
