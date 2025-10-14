@@ -19,7 +19,7 @@ INSERT INTO [dbo].[groupingTree] ([GroupingId]
 ;
 ```
 In this scenario, data entered into the table by an application that was simply inserting values into the table with duplicate `Code` values 
-and using the largest `SortOrder` value as the true value. The developer took this approach because the didn't know that having this historacal values 
+and using the largest `SortOrder` value as the true value. The developer took this approach because the didn't know that having this historical values 
 really slowed down queries and customer didn't need to track the old values.   
    
 In order to create a primary key on `Code`, they needed to delete the latest version of the records with the largest `SortOrder` value.   
