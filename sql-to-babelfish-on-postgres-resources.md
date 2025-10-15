@@ -30,6 +30,14 @@
 - https://babelfishpg.org/
 - Official Babelfish homepage and documentation portal for the open-source PostgreSQL extension that understands SQL Server T-SQL and wire protocol
 
+**Babelfish Internals - Software Architecture**
+- https://babelfishpg.org/docs/internals/software-architecture/
+- Technical architecture overview explaining Babelfish's dual-port design, PostgreSQL hook system, database-to-schema mapping, and the four core extensions (common, money, tds, tsql)
+
+**Amazon Aurora PostgreSQL for SQL Server Developers/DBAs technical workshop**
+- https://catalog.us-east-1.prod.workshops.aws/workshops/139ddc4a-5024-4b47-928f-fb676bf146e7/en-US#workshop-overview
+- Hands-on AWS workshop providing SQL Server developers and DBAs with practical exercises for transitioning to and working with Amazon Aurora PostgreSQL
+
 ### AWS Blog Posts - Migration Process
 
 **Migrate SQL Server to Babelfish for Aurora PostgreSQL using the Compass tool and AWS DMS**
